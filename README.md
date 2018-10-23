@@ -8,8 +8,6 @@ Si se levanta una imagen y se hacen cambios sin actualizar la imagen, al hacer u
 
 Todos los comandos de docker están aquí: [Docker CLI][]
 
-
-
 ## Contenedores
 
 Para ver los contenedores que hay en el equipo hay que ejecutar:
@@ -19,27 +17,28 @@ Para ver los contenedores que hay en el equipo hay que ejecutar:
 
 ## Modo background
 
-Para poner ejecuciones de docker en segundo plano hay que añadir -d
+Para poner ejecuciones de docker en segundo plano hay que añadir _-d_ .
 
 ```docker run -d sleep 10```
 
 ## Mapeo de puertos
 
-En el Dockerfile hay que añadir EXPOSE PUERTO_CONTENEDOR
+En el Dockerfile hay que añadir _EXPOSE PUERTO_CONTENEDOR_ .
 
 ```-p <PUERTO_HOST>:<PUERTO_CONTENEDOR>```
 
 ## Volúmenes
 
-Para conectar un directorio del host con el contenedor habría que añadir en el Dockerfile VOLUME DIRECTORIO_CONTENEDOR
+Para conectar un directorio del host con el contenedor habría que añadir en el Dockerfile _VOLUME DIRECTORIO_CONTENEDOR_ .
 
 ```-v <DIRECTORIO_HOST>:<DIRECTORIO_CONTENEDOR>```
 
 ## Eliminar
 
-Para parar un contenedor y eliminarlo hay que ejecutar los siguientes comandos: 
+Para parar un contenedor y eliminarlo hay que ejecutar los siguientes comandos:
 
 ```docker container stop <NOMBRE_CONTENEDOR>```
+
 ```docker container rm <NOMBRE_CONTENEDOR>```
 
 ## Crear una imagen propia
@@ -64,19 +63,18 @@ y por último levantamos un contenedor con la imagen que hemos creado:
 
 ## COPY vs ADD
 
-**Se recomienda usar siempre COPY** a no ser que estemos seguros de que queremos/necesitamos hacer un ADD.
+**Se recomienda usar siempre _COPY_** a no ser que estemos seguros de que queremos/necesitamos hacer un _ADD_ .
 
 ### COPY
 
 ```COPY <src> <dest>```
 
-Sólo admite copia de archivos locales en el mismo directorio que el archivo Dockerfile hacia el contenedor
+Sólo admite copia de archivos locales en el mismo directorio que el archivo Dockerfile hacia el contenedor.
 
 ### ADD
 
 ```ADD <src> <dest>```
 
-Además de lo que hace COPY, ADD también admite extracción de archivos comprimidos en formato .tar si se encuentran en local y soporte para que el src sea una URL
-
+Además de lo que hace COPY, ADD también admite extracción de archivos comprimidos en formato .tar si se encuentran en local y soporte para que el src sea una URL.
 
 [Docker CLI]: https://docs.docker.com/engine/reference/commandline/docker/
