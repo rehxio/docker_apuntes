@@ -2,7 +2,13 @@
 
 ## Imagenes
 
-Si se levanta una imagen y se hacen cambios sin actualizar la imagen, al hacer un exit todo lo que hayamos hecho dentro se perderá porque no hemos guardado los cambios. Si volvemos a levantar otra imagen en otro docker (contenedor), se levantará con la imagen orginal, no con los cambios que hayamos ido haciendo a no ser que hayamos actualizado dicha imagen.
+Las imagenes son la configuración de un sistema con las aplicaciones que queremos/necesitamos y toda la configuración que les afecta tanto al sistema como a las aplicaciones, apartir de estas imagenes podemos crear diferentes instancias, llamadas contenedores, es decir, usamos la imagen como un modelo desde el que se crea una virtualización con todo lo necesario para que nuestra aplicación funcione.
+
+En el caso de que levantemos varios contenedores de la misma imagen, lo que hará docker será tener las librerías y configuraciones comunes una sola vez para todos los contenedores, y sólo replicará las aplicaciones que es lo que nos interesa tener varias veces.
+
+Si se levanta un contenedor desde una imagen y queremos trabajar en este contenedor debemos ser conscientes que esta información que hay dentro del contenedor se va a perder, si queremos trabajar algo debemos hacerlo desde fuera del contenedor en la configuración, dentro del contenedor sólo deben estar las aplicaciones y su configuración añadidas mediante el archivo de configuración Dockerfile.
+
+Se puede acceder al contenedor activo y trabajar en el para poder probar algo y ver si algo está fallando, de ese modo podemos corregirlo, pero nunca se debe dejar la corrección dentro del contenedor. Ya que al volver a levantar otra instancia de la imagen, se iniciará con la configuración que teníamos originalmente en la imagen.
 
 ## Comandos
 
@@ -116,7 +122,7 @@ Y siempre que se pueda usar imagenes creadas oficiales.
 
 ### IMPORTANTE
 
-Dentro de los contenedores no se debe guardar información, se debe almacenar en local y en el contenedor debe estár la aplicación, las librerías y la configuración de las mismas.
+Dentro de los contenedores NO se debe guardar información, se debe almacenar en local y en el contenedor debe estar la aplicación, las librerías y la configuración de las mismas.
 
 En la configuración del Dockerfile, como buena práctica se debe colocar arriba lo que menos se cambia y abajo lo que más se cambia, ya que lo que no cambie usará caché y ahorra tiempo al crear el contenedor.
 
